@@ -1,0 +1,36 @@
+{% extends 'remembo/base.html' %}
+{% block main_content %}
+<div class="ccblock">
+<form method="post" action="/home">
+    {% csrf_token %}
+  <div  style="height: 6em;">
+    <label style="font-family: cursive; font-size: xx-large;">Front Content</label>
+    <input type="text"  id="fronttext" name="fronttext" style="height: 2em;
+    width: 38em;">
+  </div>
+  <div  style="height: 4em;">
+    <label  style="font-family: cursive;font-size: xx-large;">Back Content</label><br>
+    <input type="text" id="backtext" name="backtext" style="height: 2em;
+    width: 38em;">
+  </div>
+  <div  style="height: 4em; margin-top: 3em;">
+    <label  style="font-family: cursive;font-size: xx-large;">Select Deck</label><br>
+    <select name="getdeck">
+        <option value="test1">TEST1</option>
+        <option value="test2">TEST2</option>
+        <option value="test3">TEST3</option>
+        <option value="test4">TEST4</option>
+    </select>
+  </div>
+  <button type="submit" style="
+        margin-left: 0em;
+    width: 102px;
+    border-radius: 20px;
+    background: #ffc728;
+    color: black;
+    height: 3em;
+    margin-top:3em;
+        "><b>Save</b></button>
+</form>
+</div>
+{% endblock %}

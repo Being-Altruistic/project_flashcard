@@ -1,0 +1,48 @@
+{% extends 'remembo/base.html' %}
+{% block main_content %}
+{% if question %}
+        <form method="post" action="/createcard">
+            {% csrf_token %}
+        <div class = "buttoncreatec">
+            <input type="submit" value="Create Card" style="margin-left: 5em;width: 100px;border-radius: 20px; background:  black;
+                margin-left: 1em;
+                width: 11em;
+                border-radius: 20px;
+                background: black;
+                color: white;
+                height: 4em;
+                margin-top: 5px;
+                font-family: cursive;
+                font-size: large; font-weight: bold;
+                ">
+        </div>
+        </form>
+        <div class="maincontainer">
+            {% for ans in question.flashcard_set.all %}
+                <div class="thecard">
+                    <div class="thefront">
+                        <div class="fronttextdiv">
+                            <b style="font-size: x-large;font-family: cursive;">{{ans.front}}</b>
+                        </div>
+                    </div>
+                    <div class="theback">
+                        <!--
+                            <p><input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}"/>
+                            <p><label for="choice{{forloop.counter}}"> {{choice.choice_text}}</label></p>
+                            -->
+                            <div class="backtextdiv">
+                                <i style="font-size: x-large;font-family: cursive;">{{ans.back}}</i>
+                            </div>
+                        <div class="buttonblock">
+                            <form method="post" action="/">
+                             <input type="Button" value="DONE" name="done" style="background-color: Green; width:100px; height:40px; border-radius: 20px; color: white;">   <input type="Button" value="REVISE" name="revise" style="background-color: Red; width:100px; height:40px; border-radius: 20px; color: white;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+       </div>
+{% else %}
+    <p> You have no cards to View! Why don't you add some? </p>
+{% endif %}
+{% endblock %}

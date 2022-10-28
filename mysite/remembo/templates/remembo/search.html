@@ -1,0 +1,22 @@
+{% extends 'remembo/base.html' %}
+{% block main_content %}
+{% if all_questions %}
+
+        <div class="maincontainer">
+            {% for i in all_questions %}
+                {% if i.deck_name == searchdata %}
+                    <div class="thedeckcard">
+                        <div class="thedeckfront">
+                            <div class="deckfronttext">
+                                <a href = {% url "remembo:detail" i.id %} ><b style="font-size: x-large;font-family: cursive;">{{i.deck_name}}</b></a><br>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+{% else %}
+    <h1>It seems, u have no Decks created.... | Why not create 1 ?</h1>
+{% endif %}
+{% endblock %}

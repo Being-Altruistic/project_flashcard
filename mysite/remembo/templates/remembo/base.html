@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .maincontainer{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: -67px;
+    margin-left: 6em;
+    }
+    .searchbox{
+    position: relative;
+    width: 16.9em;
+    height: 0em;
+    margin-left: 10em;
+    margin-top: 0em;
+    }
+    .thecard{
+    position: relative;
+    width: 18em;
+    height: 20em;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    float: left;
+    margin: -137px 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 6em;
+    }
+    .thedeckcard{
+    position: relative;
+    width: 18em;
+    height: 20em;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    float: left;
+    margin: 0px 10px;
+    margin-bottom: -141px;
+    display: flex;
+    flex-direction: row;
+    margin-top: -2em;
+    }
+    .thedeckfront{
+    position: absolute;
+    width: 16em;
+    height: 7em;
+    backface-visibility: hidden;
+    background: #ffc728;
+    color: #333;
+    text-align: center;
+    font-family: 'zilla slab',sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 12em;
+    margin-left: -1em;
+    }
+    .deckfronttext{
+    position: relative;
+    width: 16.9em;
+    height: 2em;
+    margin: 135px 0px;
+    margin-top: 41px;
+    margin-left: -8px;
+    }
+    .thecard:hover{
+    transform: rotateY(180deg);
+    }
+    .thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #ffc728;
+    color: #333;
+    text-align: center;
+    font-family: 'zilla slab',sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    }
+    .theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #000000;
+    color: #fff;
+    text-align: center;
+    font-family: 'zilla slab', sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transform: rotateY(180deg);
+    }
+    .buttonblock{
+    position: relative;
+    width: 16.9em;
+    height: 2em;
+    margin: 131px 0px;
+    }
+    .fronttextdiv{
+    position: relative;
+    width: 15.9em;
+    height: 2em;
+    margin: 135px 0px;
+    }
+    .backtextdiv{
+    position: relative;
+    width: 15.9em;
+    height: 2em;
+    margin: 110px 0px;
+    }
+    .buttoncreatec{
+    position: relative;
+    width: 16.9em;
+    height: 0em;
+    margin: 131px 0px;
+    margin-left: 83em;
+    margin-top: 19em;
+    }
+    .ccblock{
+    position: relative;
+    width: 16.9em;
+    height: 6em;
+    margin: 134px 0px;
+    margin-left: 36em;
+    }
+    .labeldeck{
+    position: relative;
+    width: 16.9em;
+    height: 2em;
+    margin: 110px 0px;
+    }
+    </style>
+</head>
+<body>
+
+<!---
+    Cookie cutter example.
+    Below code allows user to mentions some dynamic changes
+    Static/redundant contents of HTML can be mentioned here
+-->
+{% block main_content %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends 'remembo/base.html' %}
+{% block main_content %}
+{% if get_decks %}
+
+        <form method="post" action="/home">
+            {% csrf_token %}
+        <label  style="font-family: cursive;font-size: xx-large;margin-left: 2em;">Your bookmarks</label>  <input type="submit" name="home" value="Visit HOME" style="height: 3em;width: 7em;">
+        </form>
+
+        <form method="post" action="/viewbookmarks">
+            {% csrf_token %}
+        <div  style="height: 4em; margin-top: 3em;">
+
+        <label  style="font-family: cursive;font-size: xx-large;margin-left: 31em;">Delete bookmarks</label><br>
+        <select name="delbookmark" style="margin-left: 83em; height: 3em;width: 18em;">
+            {% for i in get_decks%}
+                {% if i.deck_bookmark == "MARK" %}
+                    <option value= {{ i.id }}>{{ i.deck_name }}</option>
+                {% endif %}
+            {% endfor %}
+            <option value= "All">ALL</option>
+        </select>
+
+        <input type="submit" name="submit" value="Delete" style="height: 3em;width: 7em;">
+        </div>
+        </form>
+
+
+        <div class="maincontainer">
+            {% for i in get_decks %}
+                {% if i.deck_bookmark == "MARK" %}
+                    <div class="thedeckcard">
+                        <div class="thedeckfront">
+                            <div class="deckfronttext">
+                                <a href = {% url "remembo:detail" i.id %} ><b style="font-size: x-large;font-family: cursive;">{{i.deck_name}}</b></a><br>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+{% else %}
+    <h1>It seems, u have no Decks created.... | Why not create 1 ?</h1>
+{% endif %}
+{% endblock %}

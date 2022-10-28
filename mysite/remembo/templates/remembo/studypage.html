@@ -1,0 +1,83 @@
+{% extends 'remembo/base.html' %}
+{% block main_content %}
+
+
+  <div class="maincontainer" style="
+        .maincontainer{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: -67px;
+    margin-left: 6em;
+    }
+    .thecard{
+    position: relative;
+    width: 18em;
+    height: 20em;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    float: left;
+    margin: -137px 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    }
+    .thecard:hover{
+    transform: rotateY(180deg);
+    }
+    .thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #ffc728;
+    color: #333;
+    text-align: center;
+    font-family: 'zilla slab',sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    }
+    .theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #000000;
+    color: #fff;
+    text-align: center;
+    font-family: 'zilla slab', sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transform: rotateY(180deg);
+    }">
+                <div class="thecard">
+                    {% for ans in deck_row.flashcard_set.all %}
+                    <div class="thefront">
+                        <div class="fronttextdiv">
+                            <b style="font-size: x-large;font-family: cursive;">{{ans.front}}</b>
+                        </div>
+                    </div>
+                    <div class="theback">
+                        <!--
+                            <p><input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}"/>
+                            <p><label for="choice{{forloop.counter}}"> {{choice.choice_text}}</label></p>
+                            -->
+                            <div class="backtextdiv">
+                                <i style="font-size: x-large;font-family: cursive;">{{ans.back}}</i>
+                            </div>
+
+                        <div class="buttonblock">
+                            <form method="post" action="/">
+                             <input type="Button" value="DONE" name="done" style="background-color: Green; width:100px; height:40px; border-radius: 20px; color: white;">   <input type="Button" value="REVISE" name="revise" style="background-color: Red; width:100px; height:40px; border-radius: 20px; color: white;">
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+       </div>
+
+{% endblock %}

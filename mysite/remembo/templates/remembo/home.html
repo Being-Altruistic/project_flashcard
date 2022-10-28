@@ -1,0 +1,86 @@
+{% extends 'remembo/base.html' %}
+{% block main_content %}
+{% if get_questions %}
+
+
+
+        <form method="post" action="/studypage">
+            {% csrf_token %}
+        <div  style="height: 4em; margin-top: 3em;">
+        <label  style="font-family: cursive;font-size: xx-large;margin-left: 31em;">Select Deck to Study</label><br>
+        <select name="selecttostudy" style="margin-left: 83em; height: 3em;width: 18em;">
+            {% for i in get_questions %}
+            <option value= {{ i.id }}>{{ i.deck_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="submit" value="study">
+        </div>
+        </form>
+
+
+
+        <!-- BOOKMARK start-->
+        <form method="post" action="/home">
+            {% csrf_token %}
+        <div  style="height: 4em; margin-top: 3em;">
+        <label  style="font-family: cursive;font-size: xx-large;margin-left: 31em;">Select Deck to bookmark</label><br>
+        <select name="getbookmark" style="margin-left: 83em; height: 3em;width: 18em;">
+            {% for i in get_questions %}
+            <option value= {{ i.id }}>{{ i.deck_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="submit" value="Add">
+        </div>
+        </form>
+
+        <form method="post" action="/viewbookmarks">
+            {% csrf_token %}
+        <input type="submit" value="View Bookmarks!" name="bkbutton" style="
+                    margin-left: 41em;
+                    height: 3em;
+                    width: 19em;
+                    margin-top: 4em;
+                    background: yellow;
+                    font-family: cursive;
+                    font-size: x-large;
+                    border-radius: 2em;">
+        </form>
+          <!-- BOOKMARK end-->
+
+        <form method="post" action="/search">
+            {% csrf_token %}
+        <div class="searchbox">
+            <input type="text" placeholder="Enter deck name"  name="searchval"  style="height: 3em; width: 25em;">  <input type="submit" value="GO" style="height: 3em;width: 7em;">
+        </div>
+        </form>
+        <form method="post" action="/createdeck" style="height: 2em;">
+            {% csrf_token %}
+        <div class = "buttoncreatec">
+            <input type="submit" value="Create Deck" style="margin-left: 5em;width: 100px;border-radius: 20px; background:  black;
+                margin-left: 1em;
+                width: 11em;
+                border-radius: 20px;
+                background: black;
+                color: white;
+                height: 4em;
+                margin-top: 5px;
+                font-family: cursive;
+                font-size: large; font-weight: bold;
+                ">
+        </div>
+        </form>
+        <div class="maincontainer">
+        {% for i in get_questions %}
+                <div class="thedeckcard">
+                    <div class="thedeckfront">
+                        <div class="deckfronttext">
+                            <a href = {% url "remembo:detail" i.id %} ><b style="font-size: x-large;font-family: cursive;">{{i.deck_name}}</b></a><br>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% else %}
+    <p> You have no questions to View! Why don't you add some? </p>
+{% endif %}
+{% endblock %}
